@@ -14,4 +14,7 @@ pluginManagement {
 }
 
 rootProject.name = "ecf-club-ratings-tool"
-include("app", "list", "utilities")
+include("app")
+include("domain-model")
+include("ecf-api-client")
+include("ecf-rating-scraper")

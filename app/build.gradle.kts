@@ -9,8 +9,9 @@ plugins {
 }
 
 dependencies {
+    project(":domain-model")
     implementation("org.apache.commons:commons-text")
-    implementation(project(":utilities"))
+    testImplementation("org.assertj:assertj-core")
 }
 
 application {

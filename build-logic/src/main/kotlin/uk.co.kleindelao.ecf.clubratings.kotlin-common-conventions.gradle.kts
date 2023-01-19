@@ -18,7 +18,15 @@ dependencies {
     constraints {
         // Define dependency versions as constraints
         implementation("org.apache.commons:commons-text:1.9")
+        implementation("org.jsoup:jsoup:1.15.3")
+        implementation("com.squareup.okhttp:okhttp:2.7.5")
+        testImplementation("org.assertj:assertj-core:3.24.1")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.1")
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 testing {
