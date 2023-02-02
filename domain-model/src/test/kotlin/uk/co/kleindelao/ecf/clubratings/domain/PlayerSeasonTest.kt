@@ -7,29 +7,29 @@ import kotlin.random.Random
 
 class PlayerSeasonTest {
     @Test
-    fun shouldCalculateRatingDifferenceFromStartRatingAndCurrentRating() {
+    fun shouldCalculateRatingDifferenceFromStartRatingAndEndRating() {
         val startRating = Random.nextInt(3000)
-        val currentRating = Random.nextInt(3000)
+        val endRating = Random.nextInt(3000)
         val playerSeason =
             PlayerSeason(
                 Player(RandomString.make(), RandomString.make(), RandomString.make()),
                 startRating,
-                currentRating
+                endRating
             )
 
         val actualDifference = playerSeason.ratingGain
-        then(actualDifference).isEqualTo(currentRating - startRating)
+        then(actualDifference).isEqualTo(endRating - startRating)
     }
 
     @Test
     fun shouldReturnNullIfStartRatingIsNull() {
         val startRating = null
-        val currentRating = Random.nextInt(3000)
+        val endRating = Random.nextInt(3000)
         val playerSeason =
             PlayerSeason(
                 Player(RandomString.make(), RandomString.make(), RandomString.make()),
                 startRating,
-                currentRating
+                endRating
             )
 
         val actualDifference = playerSeason.ratingGain
@@ -39,12 +39,12 @@ class PlayerSeasonTest {
     @Test
     fun shouldReturnNullIfEndRatingIsNull() {
         val startRating = Random.nextInt(3000)
-        val currentRating = null
+        val endRating = null
         val playerSeason =
             PlayerSeason(
                 Player(RandomString.make(), RandomString.make(), RandomString.make()),
                 startRating,
-                currentRating
+                endRating
             )
 
         val actualDifference = playerSeason.ratingGain
@@ -54,12 +54,12 @@ class PlayerSeasonTest {
     @Test
     fun shouldReturnNullIfStartRatingAndEndRatingAreNull() {
         val startRating = null
-        val currentRating = null
+        val endRating = null
         val playerSeason =
             PlayerSeason(
                 Player(RandomString.make(), RandomString.make(), RandomString.make()),
                 startRating,
-                currentRating
+                endRating
             )
 
         val actualDifference = playerSeason.ratingGain

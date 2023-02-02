@@ -1,9 +1,9 @@
 package uk.co.kleindelao.ecf.clubratings.domain
 
-data class PlayerSeason(val player: Player, val startRating: Int?, val currentRating: Int?) {
+data class PlayerSeason(val player: Player, val startRating: Int?, val endRating: Int?) {
     val ratingGain: Int? =
-        if (startRating == null || currentRating == null)
+        if (startRating == null || endRating == null)
             null
         else
-            currentRating - startRating
+            endRating - startRating
 }
