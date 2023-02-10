@@ -10,7 +10,6 @@ plugins {
 
 dependencies {
     implementation(project(":domain-business"))
-    implementation("org.apache.commons:commons-text")
     testImplementation("org.assertj:assertj-core")
 }
 
