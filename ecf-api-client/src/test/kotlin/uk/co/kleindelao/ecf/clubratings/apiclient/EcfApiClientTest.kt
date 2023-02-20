@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.squareup.okhttp.OkHttpClient
 import org.assertj.core.api.BDDAssertions.then
 import org.junit.jupiter.api.Test
+import uk.co.kleindelao.ecf.clubratings.domain.BasicClubInfo
 import uk.co.kleindelao.ecf.clubratings.domain.Player
 import java.time.LocalDate
 
@@ -36,5 +37,11 @@ class EcfApiClientTest {
         val basicInfo = underTest.getClub("4YEO")
         then(basicInfo.code).isEqualTo("4YEO")
         then(basicInfo.name).isEqualTo("Yeovil")
+    }
+
+    @Test
+    fun shouldReturnClubs() {
+        val clubs = underTest.getAllClubs()
+        then(clubs).isNotEmpty().anySatisfy { club -> then(club).isEqualTo(BasicClubInfo("4YEO", "Yeovil")) }
     }
 }

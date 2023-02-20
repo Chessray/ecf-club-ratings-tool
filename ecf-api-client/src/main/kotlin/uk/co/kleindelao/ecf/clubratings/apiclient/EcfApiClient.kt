@@ -36,7 +36,14 @@ class EcfApiClient(private val httpClient: OkHttpClient, private val objectMappe
 
     fun getClub(clubCode: String): BasicClubInfo {
         val clubUrl = "https://www.ecfrating.org.uk/v2/new/api.php?v2/clubs/code/$clubCode"
-        val apiClub = getInformation(clubUrl, ApiClub::class.java)
-        return BasicClubInfo(apiClub.code, apiClub.name)
+        return basicClubInfo(getInformation(clubUrl, ApiClub::class.java))
+    }
+
+    private fun basicClubInfo(apiClub: ApiClub) =
+        BasicClubInfo(apiClub.code, apiClub.name)
+
+    fun getAllClubs(): List<BasicClubInfo> {
+        val allClubsUrl = "https://www.ecfrating.org.uk/v2/new/api.php?v2/clubs/all_active"
+        return getInformation(allClubsUrl, ApiAllClubs::class.java).clubs.map { basicClubInfo(it) }
     }
 }
