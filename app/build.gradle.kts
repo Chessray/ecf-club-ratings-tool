@@ -10,6 +10,7 @@ plugins {
 
 dependencies {
     implementation(project(":domain-business"))
+    implementation("com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter")
     testImplementation("org.assertj:assertj-core")
 }
 

@@ -27,3 +27,7 @@ fun getClubSeason(clubCode: String, startDate: LocalDate, endDate: LocalDate): C
     }.toList()
     return ClubSeason(club, startDate, endDate, playerSeasons)
 }
+
+fun getAllClubs(): List<BasicClubInfo> {
+    return ecfApiClient().getAllClubs()
+}
