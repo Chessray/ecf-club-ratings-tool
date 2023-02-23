@@ -31,6 +31,8 @@ class ClubSeasonTest {
                 .roundToInt()
 
         then(clubSeason.averageRatingGain).isNotNull.isEqualTo(expectedAverage)
+        then(clubSeason.formattedGain).isNotNull
+            .isEqualTo(expectedFormattedGain(expectedAverage))
     }
 
     @Test
@@ -48,6 +50,8 @@ class ClubSeasonTest {
                 .roundToInt()
 
         then(clubSeason.averageRatingGain).isNotNull.isEqualTo(expectedAverage)
+        then(clubSeason.formattedGain).isNotNull
+            .isEqualTo(expectedFormattedGain(expectedAverage))
     }
 
     @Test
@@ -65,5 +69,10 @@ class ClubSeasonTest {
                 .roundToInt()
 
         then(clubSeason.averageRatingGain).isNotNull.isEqualTo(expectedAverage)
+        then(clubSeason.formattedGain).isNotNull
+            .isEqualTo(expectedFormattedGain(expectedAverage))
     }
+
+    private fun expectedFormattedGain(expectedAverage: Int) =
+        if (expectedAverage >= 0) "+${expectedAverage}" else expectedAverage.toString()
 }

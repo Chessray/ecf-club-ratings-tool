@@ -2,13 +2,25 @@
 <head><title>ECF CLub Statistics Tool</title></head>
 <body>
     <form>
+        <label for="club">Club Selection</label>
         <select id="club" wicket:id="club">
             <option>Wells</option>
             <option>Yeovil</option>
         </select>
-        <label for="club">Club Selection</label>
+
+        <label for="startDate">Start Date</label>
+        <input type="text" id="startDate" wicket:id="startDate"/>
+        <label for="endDate">End Date</label>
+        <input type="text" id="endDate" wicket:id="endDate"/>
         <button>Retrieve information</button>
     </form>
-    <span wicket:id="selectedClub">no selection</span>
+    <label for="selectedClub">Selected Club</label>
+    <span wicket:id="selectedClub" id="selectedClub">no selection</span>
+    <br/>
+    <label for="numberOfPlayers">Number of Players with record covering whole season</label>
+    <span wicket:id="numberOfPlayers" id="numberOfPlayers">12345</span>
+    <br/>
+    <label for="averageRatingDevelopment">Average Rating Development</label>
+    <span wicket:id="averageRatingDevelopment" id="averageRatingDevelopment">+100</span>
 </body>
 </html>
