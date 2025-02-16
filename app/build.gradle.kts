@@ -17,5 +17,17 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("uk.co.kleindelao.ecf.clubratings.app.AppKt")
+    mainClass.set("uk.co.kleindelao.ecf.clubratings.app.WicketApplication")
+}
+
+docker {
+    springBootApplication {
+        baseImage.set("openjdk:17")
+    }
+}
+
+tasks {
+    dockerBuildImage {
+        dependsOn("test")
+    }
 }

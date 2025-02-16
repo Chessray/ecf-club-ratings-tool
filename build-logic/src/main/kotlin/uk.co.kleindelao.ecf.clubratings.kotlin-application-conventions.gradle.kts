@@ -7,6 +7,8 @@
 plugins {
     // Apply the common convention plugin for shared build configuration between library and application projects.
     id("uk.co.kleindelao.ecf.clubratings.kotlin-common-conventions")
+    id("org.springframework.boot")
+    id("com.bmuschko.docker-spring-boot-application")
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
