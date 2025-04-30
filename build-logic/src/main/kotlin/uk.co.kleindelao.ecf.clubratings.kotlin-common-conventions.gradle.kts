@@ -23,7 +23,7 @@ dependencies {
         testImplementation("org.assertj:assertj-core:3.27.3")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.0")
         implementation("com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:4.0.0")
-        implementation("org.apache.wicket:wicket-extensions:10.4.0")
+        implementation("org.apache.wicket:wicket-extensions:10.5.0")
     }
 }
 
