@@ -20,7 +20,7 @@ dependencies {
         implementation("org.apache.commons:commons-text:1.14.0")
         implementation("org.jsoup:jsoup:1.21.2")
         implementation("com.squareup.okhttp:okhttp:2.7.5")
-        testImplementation("org.assertj:assertj-core:3.27.4")
+        testImplementation("org.assertj:assertj-core:3.27.5")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.20.0")
         implementation("com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:4.1.1")
         implementation("org.apache.wicket:wicket-extensions:10.6.0")
