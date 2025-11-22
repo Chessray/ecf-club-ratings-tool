@@ -12,8 +12,12 @@ import java.time.format.DateTimeFormatter
 class EcfApiClient(private val httpClient: OkHttpClient, private val objectMapper: ObjectMapper) {
 
     fun getPlayer(ratingCode: Int): Player {
-        val playerUrl = "https://www.ecfrating.org.uk/v2/new/api.php?v2/players/code/$ratingCode"
+        val playerUrl = "https://rating.englishchess.org.uk/v2/new/api.php?v2/players/code/$ratingCode"
         val apiPlayer = getInformation(playerUrl, ApiPlayer::class.java)
+        return toPlayerObject(apiPlayer)
+    }
+
+    private fun toPlayerObject(apiPlayer: ApiPlayer): Player {
         val nameParts = apiPlayer.fullName.split(',', ignoreCase = true, limit = 2)
         return Player(apiPlayer.ecfCode, nameParts[1].trim(), nameParts[0].trim())
     }
@@ -27,7 +31,7 @@ class EcfApiClient(private val httpClient: OkHttpClient, private val objectMappe
     fun getRatingOnDay(player: Player, date: LocalDate): Int? {
         val ratingCode = player.ecfCode.substring(0, player.ecfCode.length - 1)
         val formattedDate = date.format(DateTimeFormatter.ISO_DATE)
-        val ratingUrl = "https://www.ecfrating.org.uk/v2/new/api.php?v2/ratings/S/$ratingCode/$formattedDate"
+        val ratingUrl = "https://rating.englishchess.org.uk/v2/new/api.php?v2/ratings/S/$ratingCode/$formattedDate"
         return getInformation(ratingUrl, ApiRatingInfo::class.java).originalRating
     }
 
@@ -35,7 +39,7 @@ class EcfApiClient(private val httpClient: OkHttpClient, private val objectMappe
         objectMapper.readValue(responseBody(createGetRequest(ratingUrl)).string(), responseClass)
 
     fun getClub(clubCode: String): BasicClubInfo {
-        val clubUrl = "https://www.ecfrating.org.uk/v2/new/api.php?v2/clubs/code/$clubCode"
+        val clubUrl = "https://rating.englishchess.org.uk/v2/new/api.php?v2/clubs/code/$clubCode"
         return basicClubInfo(getInformation(clubUrl, ApiClub::class.java))
     }
 
@@ -43,7 +47,17 @@ class EcfApiClient(private val httpClient: OkHttpClient, private val objectMappe
         BasicClubInfo(apiClub.code, apiClub.name)
 
     fun getAllClubs(): List<BasicClubInfo> {
-        val allClubsUrl = "https://www.ecfrating.org.uk/v2/new/api.php?v2/clubs/all_active"
+        val allClubsUrl = "https://rating.englishchess.org.uk/v2/new/api.php?v2/clubs/all_active"
         return getInformation(allClubsUrl, ApiAllClubs::class.java).clubs.map { basicClubInfo(it) }
+    }
+
+    fun getClubPlayers(clubCode: String): List<Player> {
+        val clubListUrl = "https://rating.englishchess.org.uk/v2/new/api.php?v2/club_players/${clubCode}"
+        return getInformation(clubListUrl, ApiClubList::class.java).players.map { toApiPlayer(it) }
+            .map { toPlayerObject(it) }
+    }
+
+    private fun toApiPlayer(row: List<String?>): ApiPlayer {
+        return ApiPlayer(row[1]!!, row[0]!!)
     }
 }

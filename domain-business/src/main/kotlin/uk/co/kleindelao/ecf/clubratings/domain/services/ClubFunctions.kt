@@ -5,7 +5,6 @@ import uk.co.kleindelao.ecf.clubratings.domain.BasicClubInfo
 import uk.co.kleindelao.ecf.clubratings.domain.Club
 import uk.co.kleindelao.ecf.clubratings.domain.ClubSeason
 import uk.co.kleindelao.ecf.clubratings.domain.PlayerSeason
-import uk.co.kleindelao.ecf.clubratings.scraper.addPlayers
 import java.time.LocalDate
 
 fun getInfoForClubCode(code: String): BasicClubInfo {
@@ -13,7 +12,7 @@ fun getInfoForClubCode(code: String): BasicClubInfo {
 }
 
 fun getClubForClubCode(code: String): Club {
-    return addPlayers(getInfoForClubCode(code), ecfApiClient()::getPlayer)
+    return Club(getInfoForClubCode(code), ecfApiClient().getClubPlayers(code))
 }
 
 fun getClubSeason(clubCode: String, startDate: LocalDate, endDate: LocalDate): ClubSeason {
