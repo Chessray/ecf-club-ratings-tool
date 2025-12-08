@@ -17,7 +17,7 @@ repositories {
 dependencies {
     constraints {
         // Define dependency versions as constraints
-        implementation("org.apache.commons:commons-text:1.14.0")
+        implementation("org.apache.commons:commons-text:1.15.0")
         implementation("org.jsoup:jsoup:1.21.2")
         implementation("com.squareup.okhttp:okhttp:2.7.5")
         testImplementation("org.assertj:assertj-core:3.27.6")
