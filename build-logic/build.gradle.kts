@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0")
     implementation("com.bmuschko:gradle-docker-plugin:10.0.0")
     implementation("org.springframework.boot:spring-boot-gradle-plugin:4.0.0")
 }
