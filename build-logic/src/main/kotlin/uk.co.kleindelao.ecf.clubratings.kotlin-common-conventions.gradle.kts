@@ -21,7 +21,7 @@ dependencies {
         implementation("org.jsoup:jsoup:1.22.1")
         implementation("com.squareup.okhttp:okhttp:2.7.5")
         testImplementation("org.assertj:assertj-core:3.27.7")
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.0")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.1")
         implementation("com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:4.1.1")
         implementation("org.apache.wicket:wicket-extensions:10.8.0")
     }
