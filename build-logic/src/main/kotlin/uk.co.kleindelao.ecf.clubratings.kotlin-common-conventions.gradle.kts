@@ -22,7 +22,7 @@ dependencies {
         implementation("com.squareup.okhttp:okhttp:2.7.5")
         testImplementation("org.assertj:assertj-core:3.27.7")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.3")
-        implementation("com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:4.1.1")
+        implementation("com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:5.0.0")
         implementation("org.apache.wicket:wicket-extensions:10.9.0")
     }
 }
